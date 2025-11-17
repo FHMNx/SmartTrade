@@ -18,15 +18,6 @@ import lk.jiat.smarttrade.util.AppUtil;
 public class UserController {
 
     @IsUser
-    @Path("/user-profile")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response loadUserProfile(@Context HttpServletRequest request) {
-        String responseJson = new UserService().userProfile(request);
-        return Response.ok().entity(responseJson).build();
-    }
-
-    @IsUser
     @Path("/logout")
     @GET
     public Response logout(@Context HttpServletRequest request) {
