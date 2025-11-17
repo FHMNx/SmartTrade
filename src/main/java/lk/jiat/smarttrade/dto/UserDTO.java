@@ -18,6 +18,8 @@ public class UserDTO implements Serializable {
     private int cityId;
     private String cityName;
     private String sinceAt;
+    private String newPassword;
+    private String confirmPassword;
 
     public UserDTO() {
     }
@@ -44,6 +46,22 @@ public class UserDTO implements Serializable {
 
     public void setSinceAt(String sinceAt) {
         this.sinceAt = sinceAt;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public int getCityId() {

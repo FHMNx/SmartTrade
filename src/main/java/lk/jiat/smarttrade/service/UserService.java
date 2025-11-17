@@ -39,6 +39,7 @@ public class UserService {
         userDTO.setId(user.getId());
         userDTO.setFirstName(user.getFirstName());
         userDTO.setLastName(user.getLastName());
+        userDTO.setPassword(user.getPassword());
 
         Session hibernateSession = HibernateUtil.getSessionFactory().openSession();
         List<Address> addressList = hibernateSession.createQuery("FROM Address a WHERE a.user=:user", Address.class)
