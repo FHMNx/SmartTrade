@@ -11,6 +11,32 @@ window.addEventListener("load", async () => {
     }
 });
 
+document.getElementById("address-anchor").addEventListener("click", async () => {
+    await loadAddress();
+});
+
+async function loadAddress() {
+    Notiflix.Loading.pulse("wait...", {
+        clickToClose: false,
+        svgColor: '#0284c7'
+    });
+
+    try {
+        const response = await fetch("api/profiles/addresses");
+        if (response.ok) {
+            const data = await response.json();
+            document.getElementById("addName").innerHTML = `Name: ${data.name}`;
+            document.getElementById("addEmail").innerHTML = `Email: ${data.email}`;
+        }
+    } catch (e) {
+        Notiflix.Notify.failure(e.message, {
+            position: 'center-top'
+        });
+    } finally {
+        Notiflix.Loading.remove();
+    }
+}
+
 async function saveChanges() {
     Notiflix.Loading.pulse("wait...", {
         clickToClose: false,
@@ -23,6 +49,7 @@ async function saveChanges() {
     let lineTwo = document.getElementById("lineTwo");
     let postalCode = document.getElementById("postalCode");
     let citySelect = document.getElementById("citySelect");
+    let mobile = document.getElementById("mobile");
     let currentPassword = document.getElementById("currentPassword");
     let newPassword = document.getElementById("newPassword");
     let confirmPassword = document.getElementById("confirmPassword");
@@ -34,7 +61,8 @@ async function saveChanges() {
         lineTwo: lineTwo.value,
         postalCode: postalCode.value,
         cityId: citySelect.value,
-        currentPassword: currentPassword.value,
+        mobile: mobile.value,
+        password: currentPassword.value,
         newPassword: newPassword.value,
         confirmPassword: confirmPassword.value,
     };
@@ -56,6 +84,7 @@ async function saveChanges() {
                     data.message,
                     "okay",
                 );
+                await loadUserData();
             } else {
                 Notiflix.Notify.failure(data.message, {
                     position: 'center-top'
@@ -97,6 +126,7 @@ async function loadUserData() {
             document.getElementById("lineTwo").value = data.user.lineTwo ? data.user.lineTwo : "";
             document.getElementById("postalCode").value = data.user.postalCode ? data.user.postalCode : "";
             document.getElementById("citySelect").value = data.user.cityId ? data.user.cityId : 0;
+            document.getElementById("mobile").value = data.user.mobile;
             document.getElementById("currentPassword").value = data.user.password;
         } else {
             Notiflix.Notify.failure("Profile data loading failed!", {
