@@ -17,6 +17,7 @@ public class UserDTO implements Serializable {
     private boolean isPrimary;
     private int cityId;
     private String cityName;
+    private String mobile;
     private String sinceAt;
     private String newPassword;
     private String confirmPassword;
@@ -62,6 +63,14 @@ public class UserDTO implements Serializable {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public int getCityId() {

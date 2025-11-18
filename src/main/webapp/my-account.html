@@ -94,7 +94,7 @@
                                     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders" role="tab"
                                        aria-selected="false"><i class="fas fa-shopping-basket"></i>Orders</a>
                                     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address" role="tab"
-                                       aria-selected="false"><i class="fas fa-home"></i>Addresses</a>
+                                       aria-selected="false" id="address-anchor"><i class="fas fa-home"></i>Addresses</a>
                                     <a class="nav-item nav-link" href="#" onclick="signOut();"><i
                                             class="fal fa-sign-out"></i>Logout</a>
                                 </div>
@@ -323,6 +323,12 @@
                                                     <select id="citySelect">
                                                         <option value="0">Select</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Mobile Number</label>
+                                                    <input type="tel" class="form-control" value="" id="mobile">
                                                 </div>
                                             </div>
                                             <div class="col-12">
