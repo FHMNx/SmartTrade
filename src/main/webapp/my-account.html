@@ -88,7 +88,7 @@
                                     <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-account"
                                        role="tab" aria-selected="false"><i class="fas fa-user"></i>Account Details</a>
                                     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-add-product" role="tab"
-                                       aria-selected="true"><i class="fas fa-mobile-alt"></i>Products</a>
+                                       aria-selected="true" id="product-anchor"><i class="fas fa-mobile-alt"></i>Products</a>
                                     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-product-listing"
                                        role="tab" aria-selected="false"><i class="fas fa-list"></i>Product Listing</a>
                                     <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders" role="tab"
@@ -114,7 +114,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Brand</label>
-                                                <select id="brand" onchange="loadModels();">
+                                                <select id="brandSelect" onchange="loadModels();">
                                                     <option value="0">Select</option>
                                                 </select>
                                             </div>
@@ -450,6 +450,7 @@
 <script src="assets/js/notification.js"></script>
 <script src="assets/js/notiflix-aio-3.2.8.min.js"></script>
 <script src="assets/js/my-account.js"></script>
+<script src="assets/js/product-listing.js"></script>
 
 </body>
 
