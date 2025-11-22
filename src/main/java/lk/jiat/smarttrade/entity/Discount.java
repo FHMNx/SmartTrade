@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@NamedQuery(name = "Discount.findDefault" , query = "FROM Discount d WHERE d.couponCode='DEFAULT'")
 public class Discount implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,8 +16,8 @@ public class ProductDTO implements Serializable {
     private String colorValue;
     private int qualityId;
     private String qualityValue;
-    private double price;
-    private int qty;
+    private Double price;
+    private Integer qty;
 
     public int getProductId() {
         return productId;
@@ -123,19 +123,19 @@ public class ProductDTO implements Serializable {
         this.qualityValue = qualityValue;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public int getQty() {
+    public Integer getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(Integer qty) {
         this.qty = qty;
     }
 }

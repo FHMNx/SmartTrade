@@ -131,10 +131,6 @@ async function saveProduct() {
     let price = document.getElementById("price");
     let qty = document.getElementById("qty");
 
-    let img1 = document.getElementById("img1");
-    let img2 = document.getElementById("img2");
-    let img3 = document.getElementById("img3");
-
     const productDataObj = {
         brandId: brandSelect.value,
         modelId: modelSelect.value,
@@ -142,16 +138,13 @@ async function saveProduct() {
         description: description.value,
         storageId: storageSelect.value,
         colorId: colorSelect.value,
-        conditionId: conditionSelect.value,
-        price: price.value,
-        qty: qty.value
+        qualityId: conditionSelect.value,
+        price: parseFloat(price.value),
+        qty: parseInt(qty.value)
     };
 
     const formData = new FormData();
     formData.append("product", JSON.stringify(productDataObj));
-    formData.append("images[]", img1.files[0]);
-    formData.append("images[]", img2.files[0]);
-    formData.append("images[]", img3.files[0]);
 
     try {
         const response = await fetch("api/products/save-product", {
@@ -160,9 +153,17 @@ async function saveProduct() {
         });
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
+            if (data.status) {
+                await uploadProductImages(data.productId);
+            } else {
+                Notiflix.Notify.failure(e.message, {
+                    position: 'center-top'
+                });
+            }
         } else {
-
+            Notiflix.Notify.failure("product details adding failed", {
+                position: 'center-top'
+            });
         }
 
     } catch (e) {
@@ -171,5 +172,36 @@ async function saveProduct() {
         });
     } finally {
         Notiflix.Loading.remove();
+    }
+}
+
+async function uploadProductImages(productId) {
+    let img1 = document.getElementById("img1");
+    let img2 = document.getElementById("img2");
+    let img3 = document.getElementById("img3");
+
+    const formData = new FormData();
+    formData.append("images[]", img1.files[0]);
+    formData.append("images[]", img2.files[0]);
+    formData.append("images[]", img3.files[0]);
+
+    try {
+        const response = await fetch(`api/products/1/upload-images`, {
+            method: "PUT",
+            body: formData
+        });
+
+        if(response.ok){
+            const data = await response.json();
+            console.log(data);
+        }else{
+            Notiflix.Notify.failure("product image uploading failed", {
+                position: 'center-top'
+            });
+        }
+    } catch (e) {
+        Notiflix.Notify.failure(e.message, {
+            position: 'center-top'
+        });
     }
 }
