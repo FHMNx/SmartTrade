@@ -25,7 +25,7 @@ public class Seller extends BaseEntity{
     private Status status;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "users_id")
     private User user;
 
     @OneToMany(mappedBy = "seller")

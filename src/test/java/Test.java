@@ -18,15 +18,17 @@ public class Test {
 //        VerificationMail verificationMail = new VerificationMail("anjana.jiat@gmail.com", "123456");
 //        MailServiceProvider.getInstance().sendMail(verificationMail);
 
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
 //        HibernateUtil.getSessionFactory();
 //        String s = AppUtil.generateCode();
 //        System.out.println(s);
-        try (Session s = HibernateUtil.getSessionFactory().openSession()) {
-            User user = s.createQuery("FROM User u WHERE u.id=:x", User.class)
-                    .setParameter("x", 3)
-                    .getSingleResult();
-
-
-        }
+//        try (Session s = HibernateUtil.getSessionFactory().openSession()) {
+//            User user = s.createQuery("FROM User u WHERE u.id=:x", User.class)
+//                    .setParameter("x", 3)
+//                    .getSingleResult();
+//
+//
+//        }
     }
 }

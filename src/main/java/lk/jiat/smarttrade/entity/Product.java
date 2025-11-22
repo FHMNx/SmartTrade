@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -40,6 +41,23 @@ public class Product extends BaseEntity {
 
     @OneToMany(mappedBy = "product")
     private Set<Stock> stocks = new HashSet<>();
+
+    @Column(name = "images")
+    @CollectionTable(name = "product-images", joinColumns = @JoinColumn(name = "pr_id"))
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> images;
+
+    public void setStocks(Set<Stock> stocks) {
+        this.stocks = stocks;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
 
     public Set<Stock> getStocks() {
         return stocks;
